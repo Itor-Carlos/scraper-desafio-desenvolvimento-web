@@ -13,9 +13,10 @@
     ```
         node server.js
     ```
- - 4°) Abra a seguinte URL no seu navegador de preferência
+ - 4°) Abra a seguinte URL no seu navegador de preferência:
     ```
         http://localhost:3000
     ```
- - 5°) Abra a página da Netshoes, selecione o produto de sua preferência, coloque a URL do produto desejado no input da página aberta antes.
- - 6°) Aberte o botão escrito "Scrape"
+ - 5°) Abra a página da Netshoes e selecione o produto de sua preferência.
+ - 6°) Coloque a URL do produto desejado no input da página aberta anteriormente.
+ - 7°) Aberte o botão escrito "Scrape".
