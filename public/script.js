@@ -7,10 +7,10 @@ document.getElementById('scrapeButton').addEventListener('click', async () => {
             const data = await response.json();
             displayResult(data);
         } catch (error) {
-            console.error('Error fetching scrape data:', error);
+            console.error('Erro ao buscar dados:', error);
         }
     } else {
-        alert('Please enter a valid URL');
+        alert('Por favor, insira um URL válido');
     }
 });
 
