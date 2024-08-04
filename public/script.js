@@ -20,21 +20,25 @@ function displayResult(data) {
     const { titulo, price, images, description } = data;
 
     const html = `
-        <h2>${titulo}</h2>
-        <p><strong>Price:</strong> ${price}</p>
-        <div>
-            <strong>Images:</strong>
-            <div class="images">
-                ${images.map(src => `<img src="${src}" alt="Image" style="max-width: 200px; margin: 10px;">`).join('')}
+        <div class="content-container">
+            <h2>Titulo: ${titulo}</h2>
+            <p><strong>Preço:</strong> ${price}</p>
+            <div>
+                <strong>Imagens:</strong>
+                <div class="images">
+                    ${images.map(src => `<img src="${src}" alt="Image">`).join('')}
+                </div>
+            </div>
+            <div>
+                <strong>Descrição:</strong>
+                <ul class="text-description">
+                    ${description.map(text => `<li>${text}</li>`).join('')}
+                </ul>
             </div>
         </div>
-        <div>
-            <strong>Description:</strong>
-            <ul>
-                ${description.map(text => `<li>${text}</li>`).join('')}
-            </ul>
-        </div>
     `;
+
+
 
     resultDiv.innerHTML = html;
 }

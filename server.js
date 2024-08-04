@@ -18,19 +18,19 @@ app.get('/scrape', async (req, res) => {
         await driver.get(url);
         await Promise.all([
             driver.wait(until.elementLocated(By.css('.product-name')), 10000),
-            driver.wait(until.elementLocated(By.css('.payment')), 10000),
             driver.wait(until.elementLocated(By.css('.image-thumb')), 10000),
-            driver.wait(until.elementLocated(By.css('.features--description')), 10000)
+            driver.wait(until.elementLocated(By.css('.features--description')), 10000),
+            driver.wait(until.elementLocated(By.css('.price-box__saleInCents')), 10000)
         ]);
-        const [tituloElement, priceElement,imagesElements, descriptionElements] = await Promise.all([
+        const [tituloElement, imagesElements, descriptionElements, priceElements] = await Promise.all([
             driver.findElement(By.css('.product-name')),
-            driver.findElement(By.css('.payment')),
             driver.findElements(By.css('.image-thumb')),
-            driver.findElements(By.css('.features--description'))
+            driver.findElements(By.css('.features--description')),
+            driver.findElements(By.css('.price-box__saleInCents'))
         ]);
 
         const titulo = await tituloElement.getText();
-        const price = (await priceElement.getText()).toString().replace(/[^\d,R$\s]/g, '');
+        const price = (await priceElements[1].getText()).replace(/[^\d,R$\s]/g, '');
 
         const images = [];
         for (let imageElement of imagesElements) {
@@ -43,7 +43,7 @@ app.get('/scrape', async (req, res) => {
             const text = await descriptionElement.getText();
             description.push(text);
         }
-
+        
         res.json({ titulo, price, images, description });
     } catch (error) {
         res.status(500).json({ error: error.message });
