@@ -19,13 +19,13 @@ app.get('/scrape', async (req, res) => {
         await Promise.all([
             driver.wait(until.elementLocated(By.css('.product-name')), 10000),
             driver.wait(until.elementLocated(By.css('.payment')), 10000),
-            driver.wait(until.elementLocated(By.css('.swiper-wrapper')), 10000),
+            driver.wait(until.elementLocated(By.css('.image-thumb')), 10000),
             driver.wait(until.elementLocated(By.css('.features--description')), 10000)
         ]);
         const [tituloElement, priceElement,imagesElements, descriptionElements] = await Promise.all([
             driver.findElement(By.css('.product-name')),
             driver.findElement(By.css('.payment')),
-            driver.findElements(By.css('.swiper-wrapper img')),
+            driver.findElements(By.css('.image-thumb')),
             driver.findElements(By.css('.features--description'))
         ]);
 
