@@ -19,8 +19,3 @@ input, button {
 #result {
     margin-top: 20px;
 }
-
-#result .images {
-    max-width: 200px;
-    margin: 10px;
-}
