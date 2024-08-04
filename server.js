@@ -43,7 +43,7 @@ app.get('/scrape', async (req, res) => {
             const text = await descriptionElement.getText();
             description.push(text);
         }
-        
+        console.log({ titulo, price, images, description })
         res.json({ titulo, price, images, description });
     } catch (error) {
         res.status(500).json({ error: error.message });
