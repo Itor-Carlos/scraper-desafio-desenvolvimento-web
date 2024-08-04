@@ -30,19 +30,11 @@ app.get('/scrape', async (req, res) => {
         ]);
 
         const titulo = await tituloElement.getText();
-        const price = (await priceElements[1].getText()).replace(/[^\d,R$\s]/g, '');
-
-        const images = [];
-        for (let imageElement of imagesElements) {
-            const src = await imageElement.getAttribute('src');
-            images.push(src);
-        }
-
-        const description = [];
-        for (let descriptionElement of descriptionElements) {
-            const text = await descriptionElement.getText();
-            description.push(text);
-        }
+        const array_prices = await Promise.all(priceElements.map(price => price.getText()));
+        const price = array_prices[1].toString().replace(/[^\d,R$\s]/g, '');
+        const images = await Promise.all(imagesElements.map(imageElement => imageElement.getAttribute('src')));
+        const description = await Promise.all(descriptionElements.map(descriptionElement => descriptionElement.getText()));
+        
         console.log({ titulo, price, images, description })
         res.json({ titulo, price, images, description });
     } catch (error) {
