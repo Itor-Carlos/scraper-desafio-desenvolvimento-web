@@ -20,3 +20,6 @@
  - 5°) Abra a página da Netshoes e selecione o produto de sua preferência.
  - 6°) Coloque a URL do produto desejado no input da página aberta anteriormente.
  - 7°) Aberte o botão escrito "Scrape".
+
+### Vídeo mostrando como utilizar a aplicação de maneira local:
+ - https://drive.google.com/file/d/11l6iQGJOUP7WoAd0-eNG9hboVoEenNyJ/view?usp=sharing
